@@ -1560,16 +1560,16 @@ SAMPLE_CRM_DATA = {
   "session_id": "INS-77421-B",
   "timestamp": "2026-04-19T14:30:15Z",
   "customer_details": {
-    "first_name": "ישראל",
-    "last_name": "ישראלי",
-    "id_number": "123456789",
-    "phone_number": "050-0000000",
-    "email": "israel@example.com",
+    "first_name": "אבי",
+    "last_name": "כהן",
+    "id_number": "217689754",
+    "phone_number": "050-1234567",
+    "email": "avi.cohen@gmail.com",
     "date_of_birth": "1980-01-01"
   },
   "property_details": {
-    "city": "באר שבע",
-    "street": "מבצע חורב",
+    "city": "תל אביב",
+    "street": "סוקולוב",
     "house_number": "7",
     "apartment_number": "1",
     "floor": "1",
@@ -1579,14 +1579,14 @@ SAMPLE_CRM_DATA = {
     "year_built": "2006"
   },
   "property_characteristics": {
-    "area_sqm": 165,
-    "rooms": 4,
+    "area_sqm": 120,
+    "rooms": 2,
     "bathrooms": 2,
     "has_balcony": True,
     "balcony_area_sqm": 20,
     "has_storage_room": True,
     "has_parking": True,
-    "declared_finish_level": "מגורים עם עסק בבית וכן קיימת פרגולה"
+    "declared_finish_level": "מגורים בבית וכן קיימת פרגולה"
   },
   "security_and_safety": {
     "main_door_type": "פלדלת",

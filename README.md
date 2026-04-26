@@ -63,6 +63,7 @@ The underwriter's command center is powered by bidirectional WebSockets (`Socket
 [ Underwriter Command Center ]
    ├── Real-Time Risk Radar
    └── Visual Audit Trail Generation
+
 Technology Stack
 Frontend: React, TypeScript, TailwindCSS, Recharts (Data Visualization).
 
@@ -81,29 +82,26 @@ Python (3.10.x)
 Valid API Keys: GEMINI_API_KEY, CLAUDE_API_KEY, CLOUDINARY_URL, MONGO_URI
 
 Local Deployment
-1. Clone the Repository
 
-Bash
+1. Clone the Repository
 git clone [https://github.com/your-org/DirectVision.git](https://github.com/your-org/DirectVision.git)
 cd DirectVision
-2. Initialize Backend Services
 
-Bash
+2. Initialize Backend Services
 cd backend
 npm install
 npm run start
-3. Initialize AI Inference Engine
 
-Bash
+3. Initialize AI Inference Engine
 cd ai-engine
 pip install -r requirements.txt
 uvicorn main:app --host 0.0.0.0 --port 10000
-4. Launch Client Interfaces
 
-Bash
+4. Launch Client Interfaces
 cd frontend
 npm install
 npm run dev
+
 Contributors
 Engineered and architected by:
 
@@ -111,6 +109,6 @@ Shulamit Katzenlbogen
 
 Chaya Berkowitz
 
-Chaya Reem
+Chaya Rom
 
-Chani Zerbib
+Chani Zarbiv

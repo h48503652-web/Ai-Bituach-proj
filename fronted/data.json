@@ -16,7 +16,7 @@
     "apartment_number": 1,
     "floor": 1,
     "total_floors": 2,
-    "property_type": "וילה",
+    "property_type": "דירה",
     "ownership_status": "owner",
     "year_built": 2000
   },
@@ -47,7 +47,7 @@
   },
   "underwriting_questions": {
     "claims_last_3_years": 0,
-    "property_used_for_business": true,
+    "property_used_for_business": false,
     "is_unoccupied_frequently": false
   },
   "pricing_result": {

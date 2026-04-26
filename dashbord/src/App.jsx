@@ -14,6 +14,7 @@ import {
 
 const mockAiResponse = {
   application_id: "ממתין לנתונים...",
+  customer_name: "אבי כהן",
   address: "ממתין לסריקת נכס...",
   overall_score: 0,
   decision: "Pending",
@@ -133,6 +134,38 @@ export default function App() {
                 <span className="bg-[#0A1128] px-3 py-1.5 rounded-lg text-xs font-bold border border-[#1A2342] flex items-center gap-2">
                   <FileJson className="w-4 h-4 text-rose-400" /> ID: {data.application_id}
                 </span>
+                {data.customer_name && (
+                  <span className="bg-[#0A1128] px-3 py-1.5 rounded-lg text-xs font-bold border border-[#1A2342] flex items-center gap-2 text-white">
+                    👤 {data.customer_name}
+                  </span>
+                )}
+                {data.crm_summary?.id_number && (
+                  <span className="bg-[#0A1128] px-3 py-1.5 rounded-lg text-xs font-bold border border-[#1A2342] flex items-center gap-2 text-slate-200">
+                    ת.ז {data.crm_summary.id_number}
+                  </span>
+                )}
+                {data.crm_summary?.phone_number && (
+                  <span className="bg-[#0A1128] px-3 py-1.5 rounded-lg text-xs font-bold border border-[#1A2342] flex items-center gap-2 text-slate-200">
+                    ☎ {data.crm_summary.phone_number}
+                  </span>
+                )}
+                {data.crm_summary?.property_type && (
+                  <span className="bg-[#0A1128] px-3 py-1.5 rounded-lg text-xs font-bold border border-[#1A2342] flex items-center gap-2 text-slate-200">
+                    {data.crm_summary.property_type}
+                  </span>
+                )}
+                {(data.crm_summary?.rooms !== undefined || data.crm_summary?.area_sqm !== undefined) && (
+                  <span className="bg-[#0A1128] px-3 py-1.5 rounded-lg text-xs font-bold border border-[#1A2342] flex items-center gap-2 text-slate-200">
+                    {data.crm_summary?.rooms !== undefined ? `${data.crm_summary.rooms} חד׳` : ''}
+                    {data.crm_summary?.rooms !== undefined && data.crm_summary?.area_sqm !== undefined ? ' · ' : ''}
+                    {data.crm_summary?.area_sqm !== undefined ? `${data.crm_summary.area_sqm} מ״ר` : ''}
+                  </span>
+                )}
+                {data.crm_summary?.property_used_for_business !== undefined && (
+                  <span className={`${data.crm_summary.property_used_for_business ? 'text-amber-300 bg-amber-400/10 border-amber-400/20' : 'text-slate-200 bg-[#0A1128] border-[#1A2342]'} px-3 py-1.5 rounded-lg text-xs font-bold border flex items-center gap-2`}>
+                    {data.crm_summary.property_used_for_business ? '🏢 שימוש עסקי' : '🏠 ללא שימוש עסקי'}
+                  </span>
+                )}
                 <span className="flex items-center gap-2 text-xs font-bold text-emerald-400 bg-emerald-400/10 px-3 py-1.5 rounded-lg border border-emerald-500/20">
                   <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
                   מחובר למנוע ה-AI
@@ -156,6 +189,46 @@ export default function App() {
             </div>
           </header>
 
+          <section className={`bg-[#121A33] p-6 rounded-2xl border border-[#1A2342] shadow-lg ${cardHoverClass}`}>
+            <div className="flex items-center justify-between gap-4 mb-4">
+              <h3 className="text-sm font-black text-white uppercase tracking-widest">פרטי לקוח ונכס (CRM)</h3>
+              <span className="text-[10px] font-bold text-slate-400 bg-[#0A1128] px-3 py-1.5 rounded-lg border border-[#1A2342]">מקור: data.json</span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="bg-[#0A1128]/40 border border-[#1A2342] rounded-xl p-4">
+                <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">לקוח</p>
+                <p className="text-white font-black text-sm truncate">{data.customer_name || '—'}</p>
+                <p className="text-slate-400 text-xs mt-1 truncate">ת.ז {data.crm_summary?.id_number || '—'}</p>
+              </div>
+
+              <div className="bg-[#0A1128]/40 border border-[#1A2342] rounded-xl p-4">
+                <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">יצירת קשר</p>
+                <p className="text-white font-black text-sm truncate">{data.crm_summary?.phone_number || '—'}</p>
+                <p className="text-slate-400 text-xs mt-1 truncate">{data.crm_summary?.email || '—'}</p>
+              </div>
+
+              <div className="bg-[#0A1128]/40 border border-[#1A2342] rounded-xl p-4">
+                <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">נכס</p>
+                <p className="text-white font-black text-sm truncate">{data.address || '—'}</p>
+                <p className="text-slate-400 text-xs mt-1 truncate">{data.crm_summary?.property_type || '—'}</p>
+              </div>
+
+              <div className="bg-[#0A1128]/40 border border-[#1A2342] rounded-xl p-4">
+                <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">מאפיינים</p>
+                <p className="text-white font-black text-sm truncate">
+                  {data.crm_summary?.rooms !== undefined ? `${data.crm_summary.rooms} חד׳` : '—'}
+                  {data.crm_summary?.area_sqm !== undefined ? ` · ${data.crm_summary.area_sqm} מ״ר` : ''}
+                </p>
+                <p className={`${data.crm_summary?.property_used_for_business ? 'text-amber-300' : 'text-slate-400'} text-xs mt-1 truncate`}>
+                  {data.crm_summary?.property_used_for_business === undefined
+                    ? '—'
+                    : (data.crm_summary.property_used_for_business ? 'שימוש עסקי' : 'ללא שימוש עסקי')}
+                </p>
+              </div>
+            </div>
+          </section>
+
           {/* Top KPIs Grid */}
           <section className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className={`bg-[#121A33] p-6 rounded-2xl border border-[#1A2342] h-48 flex flex-col items-center justify-center relative ${cardHoverClass}`}>
@@ -178,11 +251,13 @@ export default function App() {
               <div className="space-y-3">
                 <div className="flex justify-between items-center text-xs">
                   <span>אימות נכס:</span>
-                  <span className="text-emerald-400 font-bold bg-emerald-400/10 px-2 py-1 rounded">תקין</span>
+                  <span className={`${data.ai_defenses?.is_valid_property === false ? 'text-rose-400 bg-rose-400/10' : 'text-emerald-400 bg-emerald-400/10'} font-bold px-2 py-1 rounded`}>
+                    {data.ai_defenses?.is_valid_property === false ? 'לא תקין' : 'תקין'}
+                  </span>
                 </div>
                 <div className="flex justify-between items-end">
                   <span className="text-xs text-slate-400">איכות צילום:</span>
-                  <span className="text-3xl font-black text-white">{(data.ai_defenses.image_clarity_score * 100).toFixed(0)}%</span>
+                  <span className="text-3xl font-black text-white">{(((data.ai_defenses?.image_clarity_score ?? 0) * 100)).toFixed(0)}%</span>
                 </div>
               </div>
             </div>

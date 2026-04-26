@@ -997,15 +997,18 @@ export default function InsuranceUploadApp() {
   if (!hasStarted) {
     return (
       <div className="app-wrapper" dir="rtl" style={{ background: '#ffffff', position: 'relative', overflow: 'auto', height: '100dvh', display: 'flex', flexDirection: 'column' }}>
-        {/* Decorative circles - Red/Pink gradient meshes */}
-        <div style={{ position: 'fixed', top: '40px', left: '-30px', width: '100px', height: '100px', background: 'linear-gradient(135deg, #D32F2F 0%, #E91E63 100%)', borderRadius: '50%', opacity: 0.75, pointerEvents: 'none', filter: 'blur(2px)' }} />
-        <div style={{ position: 'fixed', top: '20px', right: '40px', width: '60px', height: '60px', background: 'linear-gradient(135deg, #E91E63 0%, #F06292 100%)', borderRadius: '50%', opacity: 0.7, pointerEvents: 'none', filter: 'blur(1px)' }} />
-        <div style={{ position: 'fixed', bottom: '200px', left: '-10px', width: '80px', height: '80px', background: 'linear-gradient(135deg, #D32F2F 0%, #E91E63 100%)', borderRadius: '50%', opacity: 0.65, pointerEvents: 'none', filter: 'blur(2px)' }} />
+        {/* Decorative circles - Clean dashboard sidebar style */}
+        {/* Large pink circle at top like screenshot */}
+        <div style={{ position: 'fixed', top: '-140px', right: '-130px', width: '270px', height: '230px', background: 'linear-gradient(135deg, #FF2B5E 0%, #E91E63 100%)', borderRadius: '50%', pointerEvents: 'none', zIndex: 0 }} />
+        {/* Large purple circle at bottom left */}
+        <div style={{ position: 'fixed', bottom: '-190px', left: '-170px', width: '300px', height: '280px', background: 'linear-gradient(135deg, #5A38FF 0%, #7C4DFF 100%)', borderRadius: '50%', pointerEvents: 'none', zIndex: 0 }} />
+        {/* Medium pink circle at bottom right */}
+        <div style={{ position: 'fixed', bottom: '-140px', right: '-130px', width: '300px', height: '250px', background: 'linear-gradient(135deg, #B535C4 0%, #E91E63 100%)', borderRadius: '50%',  pointerEvents: 'none', zIndex: 0 }} />
         
         <div style={{ padding: '40px 24px', textAlign: 'center', maxWidth: '420px', zIndex: 1, position: 'relative', margin: 'auto', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: 'min-content' }}>
           {/* Logo */}
-          <div style={{ marginBottom: '32px', display: 'flex', justifyContent: 'center' }}>
-            <img src="/logo.svg" alt="ביטוח ישיר" style={{ height: '40px', width: 'auto' }} />
+          <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
+            <img src="/logo.svg" alt="ביטוח ישיר" style={{ height: '45px', width: 'auto' }} />
           </div>
 
           {/* Badge - Red/Pink premium glass effect */}
@@ -1015,12 +1018,12 @@ export default function InsuranceUploadApp() {
           </div>
 
           {/* House Icon in Circle - Floating Animation */}
-          <div style={{ marginBottom: '28px' }} className="animate-in stagger-1">
+          <div style={{ marginBottom: '2px' }} className="animate-in stagger-1">
             <div 
               className="float-animation"
               style={{ 
-                width: '120px', 
-                height: '120px', 
+                width: '100px', 
+                height: '100px', 
                 margin: '0 auto', 
                 background: 'linear-gradient(135deg, #FFEBEE 0%, #FCE4EC 50%, #F8BBD9 100%)', 
                 borderRadius: '50%', 
@@ -1031,7 +1034,7 @@ export default function InsuranceUploadApp() {
                 border: '2px solid rgba(233, 30, 99, 0.15)'
               }}
             >
-              <Home style={{ width: '52px', height: '52px', color: '#D32F2F' }} />
+              <Home style={{ width: '48px', height: '48px', color: ' #ff0066' }} />
             </div>
           </div>
 
@@ -1043,7 +1046,7 @@ export default function InsuranceUploadApp() {
               marginBottom: '16px', 
               fontWeight: '800', 
               lineHeight: '1.15',
-              background: 'linear-gradient(135deg, #1a1a4e 0%, #D32F2F 50%, #E91E63 100%)',
+              background: 'linear-gradient(135deg, #fb7b7b 0%, #ff0967 50%, #E91E63 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
@@ -1053,18 +1056,18 @@ export default function InsuranceUploadApp() {
           </h1>
 
           {/* Description */}
-          <p style={{ color: '#6b7280', fontSize: '15px', lineHeight: '1.6', marginBottom: '28px', padding: '0 8px', maxWidth: '340px' }}>
+          <p style={{ color: '#6d737f', fontSize: '15px', lineHeight: '1.6', marginBottom: '28px', padding: '0 8px', maxWidth: '340px' }}>
             אימות נכס מהיר בנינימום מאמץ. מעלים את החדרים, והמערכת שלנו תשלים את יתר התהליך עבורכם בצורה חכמה ומדויקת.
           </p>
 
           {/* Feature Pills - Premium Animated */}
           <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginBottom: '32px', flexWrap: 'wrap' }}>
             <div className="feature-pill animate-in stagger-1">
-              <Lock style={{ width: '14px', height: '14px', color: '#D32F2F' }} />
+              <Lock style={{ width: '14px', height: '14px', color: '#df08eb' }} />
               מאובטח
             </div>
             <div className="feature-pill animate-in stagger-2">
-              <Rocket style={{ width: '14px', height: '14px', color: '#D32F2F' }} />
+              <Rocket style={{ width: '14px', height: '14px', color: '#df08eb' }} />
               מהיר
             </div>
           </div>
@@ -1109,7 +1112,7 @@ export default function InsuranceUploadApp() {
                 ]);
               }
             }}
-            style={{ width: '100%', maxWidth: '300px', marginTop: 'auto', marginBottom: '20px' }}
+            style={{ width: '100%', maxWidth: '200px', marginTop: 'auto', marginBottom: '20px' }}
           >
             <Rocket style={{ width: '18px', height: '18px' }} />
             בואו נתחיל

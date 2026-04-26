@@ -152,10 +152,7 @@ body {
   position: absolute;
   inset: 0;
   background-color: #ffffff;
-  background-image:
-    radial-gradient(circle at 85% 15%, #b538b5 0%, #b538b5 25px, transparent 26px),
-    radial-gradient(circle at 15% 25%, #603cff 0%, #603cff 35px, transparent 36px),
-    radial-gradient(circle at 5% 85%, #ff315f 0%, #ff315f 45px, transparent 46px);
+  background-image: none;
 
   opacity: 1;
 
@@ -166,10 +163,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(circle at 85% 15%, #b538b5 0%, #b538b5 25px, transparent 26px),
-    radial-gradient(circle at 15% 25%, #603cff 0%, #603cff 35px, transparent 36px),
-    radial-gradient(circle at 5% 85%, #ff315f 0%, #ff315f 45px, transparent 46px);
+  background-image: none;
   opacity: 1;
   z-index: 0;
 }

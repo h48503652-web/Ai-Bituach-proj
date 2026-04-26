@@ -310,6 +310,10 @@ const sessionResultSchema = new mongoose.Schema({
   score: Number,
   reasoning: String,
   flags: Object,
+  crmData: Object,
+  vision: Object,
+  inputWarnings: Array,
+  locationVerified: Boolean,
   imageCount: Number,
   createdAt: { type: Date, default: Date.now }
 });
@@ -410,16 +414,45 @@ const formatDashboardData = (task) => {
         evidence_log.push({ id: 1, type: 'info', title: 'אין חריגות', desc: task.reasoning || 'לא זוהו דגלים אדומים מהותיים.', conf: 'OK' });
     }
 
+    const crm = task.crmData || task.crm_data || {};
+    const customer = crm.customer_details || {};
+    const property = crm.property_details || {};
+    const characteristics = crm.property_characteristics || {};
+    const underwritingQuestions = crm.underwriting_questions || {};
+    const customer_name = [customer.first_name, customer.last_name].filter(Boolean).join(' ').trim();
+    const address = [
+        [property.street, property.house_number].filter((v) => v !== undefined && v !== null && v !== '').join(' '),
+        property.city
+    ].filter(Boolean).join(', ');
+
+    const vision = task.vision || {};
+    const inputWarnings = Array.isArray(task.inputWarnings) ? task.inputWarnings : [];
+    const roomMismatchCount = inputWarnings.filter((w) => w && w.type === 'ROOM_MISMATCH').length;
+    const imageCount = typeof task.imageCount === 'number' ? task.imageCount : 0;
+    const computedClarity = Math.max(0.5, Math.min(0.95, 0.9 - (roomMismatchCount / Math.max(1, imageCount)) * 0.4));
+
     return {
         application_id: task._id,
-        address: "מבצע חורב 7, באר שבע", 
+        customer_name: customer_name || undefined,
+        address: address || task.address || "-",
+        crm_summary: {
+            id_number: customer.id_number || undefined,
+            phone_number: customer.phone_number || undefined,
+            email: customer.email || undefined,
+            property_type: property.property_type || undefined,
+            rooms: characteristics.rooms !== undefined ? characteristics.rooms : undefined,
+            area_sqm: characteristics.area_sqm !== undefined ? characteristics.area_sqm : undefined,
+            property_used_for_business: underwritingQuestions.property_used_for_business !== undefined ? !!underwritingQuestions.property_used_for_business : undefined
+        },
         overall_score: task.score,
         decision: task.decision,
         ai_defenses: {
-            is_valid_property: true,
-            image_clarity_score: 0.85, 
-            spaces_identified: task.spacesIdentified || [task.taskId],
-            location_verified: task.locationVerified || false
+            is_valid_property: vision.is_valid_property !== undefined ? !!vision.is_valid_property : true,
+            image_clarity_score: vision.image_clarity_score !== undefined ? Number(vision.image_clarity_score) : computedClarity,
+            spaces_identified: (vision.identified_areas && Array.isArray(vision.identified_areas) && vision.identified_areas.length > 0)
+                ? vision.identified_areas
+                : (task.spacesIdentified || [task.taskId]),
+            location_verified: !!task.locationVerified
         },
         confidence_metrics,
         risk_radar,
@@ -520,6 +553,10 @@ app.post('/api/complete-session', async (req, res) => {
             return res.status(500).json({ success: false, error: 'ה-AI לא החזיר underwriting' });
         }
 
+        const vision = response.data?.vision;
+        const inputWarnings = response.data?.input_warnings;
+        const locationVerified = photos.some((p) => p.latitude && p.longitude);
+
         await SessionResult.updateOne(
             { sessionId },
             {
@@ -529,6 +566,10 @@ app.post('/api/complete-session', async (req, res) => {
                     score: underwriting.score,
                     reasoning: underwriting.reasoning_for_crm,
                     flags: underwriting.flags,
+                    crmData: crmData || undefined,
+                    vision: vision || undefined,
+                    inputWarnings: Array.isArray(inputWarnings) ? inputWarnings : undefined,
+                    locationVerified,
                     imageCount: photos.length
                 }
             },
@@ -542,7 +583,11 @@ app.post('/api/complete-session', async (req, res) => {
             decision: underwriting.decision,
             reasoning: underwriting.reasoning_for_crm,
             flags: underwriting.flags,
-            locationVerified: photos.some((p) => p.latitude && p.longitude)
+            crmData: crmData || undefined,
+            vision: vision || undefined,
+            inputWarnings: Array.isArray(inputWarnings) ? inputWarnings : undefined,
+            imageCount: photos.length,
+            locationVerified
         };
 
         io.emit('new_analysis_result', formatDashboardData(syntheticTask));
@@ -570,7 +615,11 @@ app.get('/api/dashboard-data', async (req, res) => {
             decision: lastResult.decision,
             reasoning: lastResult.reasoning,
             flags: lastResult.flags,
-            locationVerified: false
+            crmData: lastResult.crmData,
+            vision: lastResult.vision,
+            inputWarnings: lastResult.inputWarnings,
+            imageCount: lastResult.imageCount,
+            locationVerified: !!lastResult.locationVerified
         };
         res.json(formatDashboardData(syntheticTask));
     } catch (error) {

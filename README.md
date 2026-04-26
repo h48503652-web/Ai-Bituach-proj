@@ -23,7 +23,7 @@ DirectVision was built with scalability, security, and computational efficiency 
 ### 1. Multi-Agent AI Orchestration
 Instead of relying on a single monolithic LLM, the system utilizes a hybrid orchestration approach to ensure deterministic and hallucination-free outputs:
 * **The Vision Layer (Google Gemini 3.1 Pro):** Acts purely as an objective feature extractor. It processes pixel data to identify structural elements, finish levels, and physical hazards (e.g., moisture, commercial equipment).
-* **The Logic Layer (Anthropic Claude 3.5 Sonnet):** Acts as the Lead Underwriter. It takes the structured JSON output from the Vision Layer and runs it against the policy's regulatory constraints and business rules.
+* **The Logic Layer (Anthropic Claude 4.6 Sonnet):** Acts as the Lead Underwriter. It takes the structured JSON output from the Vision Layer and runs it against the policy's regulatory constraints and business rules.
 
 ### 2. The Smart Reconciler
 To achieve zero false positives and reduce user friction, we engineered a custom reconciliation middleware. This layer cross-references the raw AI visual findings against the customer's existing CRM declarations. If the AI detects a high-risk element (e.g., a large pergola) that was already declared and priced in the CRM, the Reconciler neutralizes the flag, ensuring a fair and frictionless underwriting process.

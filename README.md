@@ -18,9 +18,6 @@
 
   <br />
 
-  [![View Demo](https://img.shields.io/badge/Watch_Demo-Video-blue?style=for-the-badge&logo=youtube)](#)
-  [![Documentation](https://img.shields.io/badge/Read-Docs-gray?style=for-the-badge&logo=readthedocs)](#)
-
 </div>
 
 ---
@@ -71,18 +68,60 @@ DirectVision is built on a highly scalable, event-driven topology separating the
 [ Multi-Agent AI Engine ]
    ├── 1. Gemini 3.1 Pro (Visual Feature Extraction)
    ├── 2. Smart Reconciler (Cross-ref vs. MongoDB CRM data)
-   └── 3. Claude 4.6 Sonnet (Risk Assessment & Scoring)
+   └── 3. Claude 3.5 Sonnet (Risk Assessment & Scoring)
           │
           ▼  (WebSocket Stream)
 [ Underwriter Command Center ]
    ├── Real-Time Risk Radar
    └── Visual Audit Trail Generation
-💡 Core Innovation Highlights1. Multi-Agent OrchestrationWe utilize a hybrid orchestration approach to ensure deterministic and hallucination-free outputs:The Vision Layer (Gemini 3.1 Pro): An objective feature extractor processing pixel data to identify structural elements, finish levels, and physical hazards.The Logic Layer (Claude 3.5 Sonnet): The "Lead Underwriter" mapping structured visual data against regulatory constraints and policy rules.2. The Smart ReconcilerA custom reconciliation middleware engineered to achieve zero false positives. It cross-references AI visual findings against existing CRM declarations, neutralizing flags for pre-declared high-risk elements (e.g., a recognized pergola) to ensure a frictionless user experience.3. Edge-Optimized Computing & Anti-FraudProcessing millions of high-resolution images is computationally expensive. We implemented an HTML5 Canvas algorithm that compresses media by >70% locally. Furthermore, the app bypasses the native camera roll, extracting active GPS Geo-Tags to prevent spoofing.📱 UI / UX Previews(Replace these placeholders with actual screenshots from your project by uploading them to your repo)💻 Tech StackDomainTechnologies UsedFrontend  Backend  AI / Inference Cloud & DB 🚀 Local Deployment1. Clone & Install DependenciesBashgit clone [https://github.com/your-org/DirectVision.git](https://github.com/your-org/DirectVision.git)
+💡 Core Innovation Highlights
+1. Multi-Agent Orchestration
+We utilize a hybrid orchestration approach to ensure deterministic and hallucination-free outputs:
+
+The Vision Layer (Gemini 3.1 Pro): An objective feature extractor processing pixel data to identify structural elements, finish levels, and physical hazards.
+
+The Logic Layer (Claude 3.5 Sonnet): The "Lead Underwriter" mapping structured visual data against regulatory constraints and policy rules.
+
+2. The Smart Reconciler
+A custom reconciliation middleware engineered to achieve zero false positives. It cross-references AI visual findings against existing CRM declarations, neutralizing flags for pre-declared high-risk elements (e.g., a recognized pergola) to ensure a frictionless user experience.
+
+3. Edge-Optimized Computing & Anti-Fraud
+Processing millions of high-resolution images is computationally expensive. We implemented an HTML5 Canvas algorithm that compresses media by >70% locally. Furthermore, the app bypasses the native camera roll, extracting active GPS Geo-Tags to prevent spoofing.
+
+📱 UI / UX Previews
+(Replace the image URLs below with actual screenshots of your mobile app and dashboard)
+
+💻 Tech Stack
+
+Domain,Technologies Used
+Frontend,  
+Backend,  
+AI / Inference, 
+Cloud & DB,
+
+🚀 Local Deployment
+1. Clone & Install Dependencies
+git clone [https://github.com/your-org/DirectVision.git](https://github.com/your-org/DirectVision.git)
 cd DirectVision
-2. Initialize Backend ServicesBashcd backend
+
+2. Initialize Backend Services
+cd backend
 npm install
 npm run start
-3. Initialize AI Inference EngineBashcd ai-engine
+
+3. Initialize AI Inference Engine
+cd ai-engine
 pip install -r requirements.txt
 uvicorn main:app --host 0.0.0.0 --port 10000
-👥 Architected ByShulamit KatzenlbogenChaya BerkowitzChaya ReemChani Zerbib
+
+👥 Architected By
+
+Chani Zerbib
+
+Shulamit Katzenlbogen
+
+Chaya Berkowitz
+
+Chaya Reem
+
+

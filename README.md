@@ -1,6 +1,8 @@
 <div align="center">
   
-  <img src="https://via.placeholder.com/1200x250/0f172a/22c55e?text=DirectVision+|+Autonomous+Insurance+Underwriting" alt="DirectVision Banner" width="100%" />
+<img width="453" height="787" alt="שמור" src="https://github.com/user-attachments/assets/85284a5a-661a-4488-959a-d43a7199c844" />
+<img width="461" height="795" alt="שמור2" src="https://github.com/user-attachments/assets/777c1e63-764d-44df-9304-24576e74212d" />
+<img width="1898" height="922" alt="דשבורד שמור 3" src="https://github.com/user-attachments/assets/4b841b4e-2e3e-4d2c-837a-6674e296442e" />
 
   <br />
 

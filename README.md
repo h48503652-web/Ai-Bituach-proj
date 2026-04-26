@@ -1,8 +1,10 @@
 <div align="center">
   
-<img width="453" height="787" alt="שמור" src="https://github.com/user-attachments/assets/85284a5a-661a-4488-959a-d43a7199c844" />
-<img width="461" height="795" alt="שמור2" src="https://github.com/user-attachments/assets/777c1e63-764d-44df-9304-24576e74212d" />
-<img width="1898" height="922" alt="דשבורד שמור 3" src="https://github.com/user-attachments/assets/4b841b4e-2e3e-4d2c-837a-6674e296442e" />
+
+<img width="949" height="461" alt="דשבורד שמור 3" src="https://github.com/user-attachments/assets/19ed57fe-0406-4545-8bd6-bc7a8e30bf24" />
+<img width="231" height="398" alt="שמור2" src="https://github.com/user-attachments/assets/a7d39493-2284-4f07-abc0-b5b6f813de2b" />
+<img width="227" height="394" alt="שמור" src="https://github.com/user-attachments/assets/30d48d9d-db06-403f-a0c4-e92544add125" />
+
 
   <br />
 

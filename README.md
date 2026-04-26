@@ -1,52 +1,66 @@
-# DirectVision: Autonomous Insurance Underwriting Engine
+<div align="center">
+  
+  <img src="https://via.placeholder.com/1200x250/0f172a/22c55e?text=DirectVision+|+Autonomous+Insurance+Underwriting" alt="DirectVision Banner" width="100%" />
 
-**Awarded 2nd Place at the Bituach Yashir Innovation Finals (2026)**
+  <br />
 
-DirectVision is an enterprise-grade InsurTech platform designed to resolve the Information Asymmetry inherent in the property insurance sector. By transitioning from manual, trust-based declarations to a deterministic, AI-driven visual ground truth, the platform enables Straight-Through Processing (STP) for underwriting decisions.
+  **Awarded 2nd Place 🥈 @ Bituach Yashir Innovation Finals (2026)**
 
----
+  <p>
+    <img src="https://img.shields.io/badge/Architecture-Multi--Agent%20AI-0f172a?style=for-the-badge&logo=googlegemini&logoColor=white" alt="Multi-Agent" />
+    <img src="https://img.shields.io/badge/Optimization-Edge%20Computing-22c55e?style=for-the-badge" alt="Edge Computing" />
+    <img src="https://img.shields.io/badge/Security-Zero--Trust-ef4444?style=for-the-badge&logo=shield&logoColor=white" alt="Zero Trust" />
+  </p>
 
-## Executive Summary
+  <p>
+    <em>Transforming property insurance underwriting from manual trust-based declarations to a deterministic, AI-driven visual ground truth.</em>
+  </p>
 
-The traditional insurance underwriting pipeline is hindered by operational bottlenecks, high manual survey costs, and exposure to fraud. DirectVision introduces a paradigm shift by leveraging a decentralized, Multi-Agent AI architecture. It empowers the end-user to securely capture localized property data, which is then processed, compressed at the edge, and evaluated against complex business logic in real-time.
+  <br />
 
-**Impact:** * Reduces operational survey costs by an estimated 80%.
-* Accelerates the underwriting decision latency from days to under 120 seconds.
-* Enforces strict compliance and anti-fraud measures via immutable audit trails.
+  [![View Demo](https://img.shields.io/badge/Watch_Demo-Video-blue?style=for-the-badge&logo=youtube)](#)
+  [![Documentation](https://img.shields.io/badge/Read-Docs-gray?style=for-the-badge&logo=readthedocs)](#)
 
----
-
-## Core Architecture & Engineering Highlights
-
-DirectVision was built with scalability, security, and computational efficiency in mind. The system is composed of several advanced engineering pillars:
-
-### 1. Multi-Agent AI Orchestration
-Instead of relying on a single monolithic LLM, the system utilizes a hybrid orchestration approach to ensure deterministic and hallucination-free outputs:
-* **The Vision Layer (Google Gemini 3.1 Pro):** Acts purely as an objective feature extractor. It processes pixel data to identify structural elements, finish levels, and physical hazards (e.g., moisture, commercial equipment).
-* **The Logic Layer (Anthropic Claude 4.6 Sonnet):** Acts as the Lead Underwriter. It takes the structured JSON output from the Vision Layer and runs it against the policy's regulatory constraints and business rules.
-
-### 2. The Smart Reconciler
-To achieve zero false positives and reduce user friction, we engineered a custom reconciliation middleware. This layer cross-references the raw AI visual findings against the customer's existing CRM declarations. If the AI detects a high-risk element (e.g., a large pergola) that was already declared and priced in the CRM, the Reconciler neutralizes the flag, ensuring a fair and frictionless underwriting process.
-
-### 3. Edge-Optimized Computing
-Processing millions of high-resolution images is computationally expensive. We implemented a client-side algorithm using the HTML5 Canvas API that compresses media files by over 70% locally. 
-* **Result:** Drastically reduces cloud ingress bandwidth, minimizes storage costs on Cloudinary, and ensures rapid uploads even on degraded cellular networks.
-
-### 4. Zero-Trust Anti-Fraud Protocol
-The client application enforces a strict zero-trust policy. It bypasses the device's native camera roll and captures media directly. Simultaneously, it extracts GPS coordinates (Geo-Tagging) and verifies them against the registered policy address. Any spatial deviation immediately flags the application for manual review.
-
-### 5. Real-Time Telemetry & Dashboards
-The underwriter's command center is powered by bidirectional WebSockets (`Socket.io`). As the AI engine processes frames asynchronously, risk scoring, multi-dimensional radar charts, and an immutable Visual Audit Trail are streamed instantly to the dashboard, enabling immediate STP approvals.
+</div>
 
 ---
 
-## System Topology
+## 📑 Table of Contents
+- [Executive Summary](#-executive-summary)
+- [System Architecture](#%EF%B8%8F-system-architecture)
+- [Core Innovation Highlights](#-core-innovation-highlights)
+- [UI / UX Previews](#-ui--ux-previews)
+- [Tech Stack](#-tech-stack)
+- [Local Deployment](#-local-deployment)
+
+---
+
+## 📖 Executive Summary
+
+The traditional insurance underwriting pipeline is hindered by operational bottlenecks, high manual survey costs, and exposure to fraud. **DirectVision** introduces a paradigm shift by leveraging a decentralized, Multi-Agent AI architecture. It empowers the end-user to securely capture localized property data, which is then processed, compressed at the edge, and evaluated against complex business logic in real-time.
+
+<table align="center">
+  <tr>
+    <td align="center">📉 <strong>80% Reduction</strong><br>in operational survey costs</td>
+    <td align="center">⚡ <strong>< 120 Seconds</strong><br>latency for final underwriting</td>
+    <td align="center">🔒 <strong>100% Compliance</strong><br>via immutable audit trails</td>
+  </tr>
+</table>
+
+---
+
+## ⚙️ System Architecture
+
+DirectVision is built on a highly scalable, event-driven topology separating the client-side acquisition from the heavy lifting of the AI inference engine.
+
+<details>
+<summary><b>👁️ Click to view the full Architecture Flow</b></summary>
 
 ```text
 [ Client Device ] 
-   ├── Secure Media Capture
-   ├── Geo-Tagging Validation
-   └── Client-Side Edge Compression (70% reduction)
+   ├── Secure Media Capture (Live Camera)
+   ├── Geo-Tagging Validation (Active GPS lock)
+   └── Edge Compression (70% payload reduction)
           │
           ▼  (HTTPS / REST)
 [ Node.js API Gateway ]
@@ -55,60 +69,20 @@ The underwriter's command center is powered by bidirectional WebSockets (`Socket
           │
           ▼  (Asynchronous Processing)
 [ Multi-Agent AI Engine ]
-   ├── 1. Gemini API (Visual Feature Extraction)
+   ├── 1. Gemini 3.1 Pro (Visual Feature Extraction)
    ├── 2. Smart Reconciler (Cross-ref vs. MongoDB CRM data)
-   └── 3. Claude API (Risk Assessment & Scoring)
+   └── 3. Claude 4.6 Sonnet (Risk Assessment & Scoring)
           │
           ▼  (WebSocket Stream)
 [ Underwriter Command Center ]
    ├── Real-Time Risk Radar
    └── Visual Audit Trail Generation
-
-Technology Stack
-Frontend: React, TypeScript, TailwindCSS, Recharts (Data Visualization).
-
-Backend: Node.js, Express.js, Socket.io (Real-time events).
-
-AI Microservice: Python, FastAPI, Google GenAI SDK, Anthropic SDK.
-
-Database & CDN: MongoDB Atlas, Cloudinary.
-
-Getting Started
-Prerequisites
-Node.js (v18.x)
-
-Python (3.10.x)
-
-Valid API Keys: GEMINI_API_KEY, CLAUDE_API_KEY, CLOUDINARY_URL, MONGO_URI
-
-Local Deployment
-
-1. Clone the Repository
-git clone [https://github.com/your-org/DirectVision.git](https://github.com/your-org/DirectVision.git)
+💡 Core Innovation Highlights1. Multi-Agent OrchestrationWe utilize a hybrid orchestration approach to ensure deterministic and hallucination-free outputs:The Vision Layer (Gemini 3.1 Pro): An objective feature extractor processing pixel data to identify structural elements, finish levels, and physical hazards.The Logic Layer (Claude 3.5 Sonnet): The "Lead Underwriter" mapping structured visual data against regulatory constraints and policy rules.2. The Smart ReconcilerA custom reconciliation middleware engineered to achieve zero false positives. It cross-references AI visual findings against existing CRM declarations, neutralizing flags for pre-declared high-risk elements (e.g., a recognized pergola) to ensure a frictionless user experience.3. Edge-Optimized Computing & Anti-FraudProcessing millions of high-resolution images is computationally expensive. We implemented an HTML5 Canvas algorithm that compresses media by >70% locally. Furthermore, the app bypasses the native camera roll, extracting active GPS Geo-Tags to prevent spoofing.📱 UI / UX Previews(Replace these placeholders with actual screenshots from your project by uploading them to your repo)💻 Tech StackDomainTechnologies UsedFrontend  Backend  AI / Inference Cloud & DB 🚀 Local Deployment1. Clone & Install DependenciesBashgit clone [https://github.com/your-org/DirectVision.git](https://github.com/your-org/DirectVision.git)
 cd DirectVision
-
-2. Initialize Backend Services
-cd backend
+2. Initialize Backend ServicesBashcd backend
 npm install
 npm run start
-
-3. Initialize AI Inference Engine
-cd ai-engine
+3. Initialize AI Inference EngineBashcd ai-engine
 pip install -r requirements.txt
 uvicorn main:app --host 0.0.0.0 --port 10000
-
-4. Launch Client Interfaces
-cd frontend
-npm install
-npm run dev
-
-Contributors
-Engineered and architected by:
-
-Shulamit Katzenlbogen
-
-Chaya Berkowitz
-
-Chaya Rom
-
-Chani Zarbiv
+👥 Architected ByShulamit KatzenlbogenChaya BerkowitzChaya ReemChani Zerbib

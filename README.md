@@ -1,10 +1,8 @@
 <div align="center">
   
-
 <img width="949" height="461" alt="דשבורד שמור 3" src="https://github.com/user-attachments/assets/19ed57fe-0406-4545-8bd6-bc7a8e30bf24" />
 <img width="231" height="398" alt="שמור2" src="https://github.com/user-attachments/assets/a7d39493-2284-4f07-abc0-b5b6f813de2b" />
 <img width="227" height="394" alt="שמור" src="https://github.com/user-attachments/assets/30d48d9d-db06-403f-a0c4-e92544add125" />
-
 
   <br />
 
@@ -62,70 +60,86 @@ DirectVision is built on a highly scalable, event-driven topology separating the
    ├── Secure Media Capture (Live Camera)
    ├── Geo-Tagging Validation (Active GPS lock)
    └── Edge Compression (70% payload reduction)
-          │
-          ▼  (HTTPS / REST)
+         │
+         ▼  (HTTPS / REST)
 [ Node.js API Gateway ]
    ├── Media Route -> Cloudinary CDN
    └── Orchestration Route -> Python FastAPI Engine
-          │
-          ▼  (Asynchronous Processing)
+         │
+         ▼  (Asynchronous Processing)
 [ Multi-Agent AI Engine ]
    ├── 1. Gemini 3.1 Pro (Visual Feature Extraction)
    ├── 2. Smart Reconciler (Cross-ref vs. MongoDB CRM data)
    └── 3. Claude 3.5 Sonnet (Risk Assessment & Scoring)
-          │
-          ▼  (WebSocket Stream)
+         │
+         ▼  (WebSocket Stream)
 [ Underwriter Command Center ]
    ├── Real-Time Risk Radar
    └── Visual Audit Trail Generation
-💡 Core Innovation Highlights
-1. Multi-Agent Orchestration
+```
+</details>
+
+---
+
+## 💡 Core Innovation Highlights
+
+### 1. Multi-Agent Orchestration
 We utilize a hybrid orchestration approach to ensure deterministic and hallucination-free outputs:
+* **The Vision Layer (Gemini 3.1 Pro):** An objective feature extractor processing pixel data to identify structural elements, finish levels, and physical hazards.
+* **The Logic Layer (Claude 3.5 Sonnet):** The "Lead Underwriter" mapping structured visual data against regulatory constraints and policy rules.
 
-The Vision Layer (Gemini 3.1 Pro): An objective feature extractor processing pixel data to identify structural elements, finish levels, and physical hazards.
-
-The Logic Layer (Claude 3.5 Sonnet): The "Lead Underwriter" mapping structured visual data against regulatory constraints and policy rules.
-
-2. The Smart Reconciler
+### 2. The Smart Reconciler
 A custom reconciliation middleware engineered to achieve zero false positives. It cross-references AI visual findings against existing CRM declarations, neutralizing flags for pre-declared high-risk elements (e.g., a recognized pergola) to ensure a frictionless user experience.
 
-3. Edge-Optimized Computing & Anti-Fraud
+### 3. Edge-Optimized Computing & Anti-Fraud
 Processing millions of high-resolution images is computationally expensive. We implemented an HTML5 Canvas algorithm that compresses media by >70% locally. Furthermore, the app bypasses the native camera roll, extracting active GPS Geo-Tags to prevent spoofing.
 
-📱 UI / UX Previews
-(Replace the image URLs below with actual screenshots of your mobile app and dashboard)
+---
 
-💻 Tech Stack
+## 📱 UI / UX Previews
 
-Domain,Technologies Used
-Frontend,  
-Backend,  
-AI / Inference, 
-Cloud & DB,
+*(Replace the image URLs below with actual screenshots of your mobile app and dashboard)*
 
-🚀 Local Deployment
-1. Clone & Install Dependencies
-git clone [https://github.com/your-org/DirectVision.git](https://github.com/your-org/DirectVision.git)
+---
+
+## 💻 Tech Stack
+
+| Domain | Technologies Used |
+| :--- | :--- |
+| **Frontend** | HTML5 Canvas, Edge Compression |
+| **Backend** | Node.js, Python FastAPI |
+| **AI / Inference** | Gemini 3.1 Pro, Claude 3.5 Sonnet |
+| **Cloud & DB** | MongoDB, Cloudinary |
+
+---
+
+## 🚀 Local Deployment
+
+**1. Clone & Install Dependencies**
+```bash
+git clone [https://github.com/h48503652-web/Ai-Bituach-proj)
 cd DirectVision
+```
 
-2. Initialize Backend Services
+**2. Initialize Backend Services**
+```bash
 cd backend
 npm install
 npm run start
+```
 
-3. Initialize AI Inference Engine
+**3. Initialize AI Inference Engine**
+```bash
 cd ai-engine
 pip install -r requirements.txt
 uvicorn main:app --host 0.0.0.0 --port 10000
+```
 
-👥 Architected By
+---
 
-Chani Zerbib
+## 👥 Architected By
 
-Shulamit Katzenlbogen
-
-Chaya Berkowitz
-
-Chaya Reem
-
-
+* Chani Zerbib
+* Shulamit Katzenlbogen
+* Chaya Berkowitz
+* Chaya Reem

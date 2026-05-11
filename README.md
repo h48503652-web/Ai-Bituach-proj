@@ -67,7 +67,7 @@ DirectVision is built on a highly scalable, event-driven topology separating the
 [ Multi-Agent AI Engine ]
    ├── 1. Gemini 3.1 Pro (Visual Feature Extraction)
    ├── 2. Smart Reconciler (Cross-ref vs. MongoDB CRM data)
-   └── 3. Claude 3.5 Sonnet (Risk Assessment & Scoring)
+   └── 3. Claude 4.6 Sonnet (Risk Assessment & Scoring)
          │
          ▼  (WebSocket Stream)
 [ Underwriter Command Center ]
@@ -83,7 +83,7 @@ DirectVision is built on a highly scalable, event-driven topology separating the
 ### 1. Multi-Agent Orchestration
 We utilize a hybrid orchestration approach to ensure deterministic and hallucination-free outputs:
 * **The Vision Layer (Gemini 3.1 Pro):** An objective feature extractor processing pixel data to identify structural elements, finish levels, and physical hazards.
-* **The Logic Layer (Claude 3.5 Sonnet):** The "Lead Underwriter" mapping structured visual data against regulatory constraints and policy rules.
+* **The Logic Layer (Claude 4.6 Sonnet):** The "Lead Underwriter" mapping structured visual data against regulatory constraints and policy rules.
 
 ### 2. The Smart Reconciler
 A custom reconciliation middleware engineered to achieve zero false positives. It cross-references AI visual findings against existing CRM declarations, neutralizing flags for pre-declared high-risk elements (e.g., a recognized pergola) to ensure a frictionless user experience.
@@ -95,10 +95,11 @@ Processing millions of high-resolution images is computationally expensive. We i
 
 ## 📱 UI / UX Previews
 
+<div align="center">
 <img width="949" height="461" alt="דשבורד שמור 3" src="https://github.com/user-attachments/assets/19ed57fe-0406-4545-8bd6-bc7a8e30bf24" />
 <img width="227" height="394" alt="שמור" src="https://github.com/user-attachments/assets/30d48d9d-db06-403f-a0c4-e92544add125" />
 <img width="231" height="398" alt="שמור2" src="https://github.com/user-attachments/assets/a7d39493-2284-4f07-abc0-b5b6f813de2b" />
-
+</div>
 ---
 
 ## 💻 Tech Stack
@@ -107,7 +108,7 @@ Processing millions of high-resolution images is computationally expensive. We i
 | :--- | :--- |
 | **Frontend** | HTML5 Canvas, Edge Compression |
 | **Backend** | Node.js, Python FastAPI |
-| **AI / Inference** | Gemini 3.1 Pro, Claude 3.5 Sonnet |
+| **AI / Inference** | Gemini 3.1 Pro, Claude 4.6 Sonnet |
 | **Cloud & DB** | MongoDB, Cloudinary |
 
 ---

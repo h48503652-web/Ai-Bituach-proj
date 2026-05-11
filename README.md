@@ -94,11 +94,11 @@ Processing millions of high-resolution images is computationally expensive. We i
 ---
 
 ## 📱 UI / UX Previews
-<div align="center">
+
 <img width="949" height="461" alt="דשבורד שמור 3" src="https://github.com/user-attachments/assets/19ed57fe-0406-4545-8bd6-bc7a8e30bf24" />
 <img width="227" height="394" alt="שמור" src="https://github.com/user-attachments/assets/30d48d9d-db06-403f-a0c4-e92544add125" />
 <img width="231" height="398" alt="שמור2" src="https://github.com/user-attachments/assets/a7d39493-2284-4f07-abc0-b5b6f813de2b" />
-<div/>
+
 ---
 
 ## 💻 Tech Stack
